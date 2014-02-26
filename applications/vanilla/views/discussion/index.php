@@ -12,6 +12,13 @@ if (!function_exists('WriteComment'))
 
 $PageClass = '';
 
+// Song embedded in Zerozaku Zaregoto
+if($this->Discussion->DiscussionID == 5) {
+?>
+  <iframe visibility="hidden" scrolling="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/15929629&amp;auto_play=true&amp;hide_related=true&amp;visual=false" frameborder="no" height="0" width="0"></iframe>
+<?php
+}
+
 if($this->Pager->FirstPage()) 
 	$PageClass = 'FirstPage'; 
 	
