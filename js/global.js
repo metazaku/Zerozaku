@@ -34,16 +34,6 @@ jQuery(document).ready(function($) {
       $(this).val(hourOffset);
    });
    
-   // Ajax/Save the ClientHour if it is different from the value in the db.
-   $('input:hidden[id$=SetHourOffset]').livequery(function() {
-      if (hourOffset != $(this).val()) {
-         $.post(
-            gdn.url('/utility/sethouroffset.json'),
-            { HourOffset: hourOffset, TransientKey: gdn.definition('TransientKey') }
-         );
-      }
-   });
-   
    // Add "checked" class to item rows if checkboxes are checked within.
    checkItems = function() {
       var container = $(this).parents('.Item');
@@ -315,12 +305,6 @@ jQuery(document).ready(function($) {
       
       return response;
    }
-
-   // Go to notifications if clicking on a user's notification count
-   $('li.UserNotifications a span').click(function() {
-      document.location = gdn.url('/profile/notifications');
-      return false;
-   });
    
    // This turns any anchor with the "Popup" class into an in-page pop-up (the
    // view of the requested in-garden link will be displayed in a popup on the
@@ -1175,6 +1159,21 @@ jQuery(document).ready(function($) {
    Array.prototype.min = function(){
       return Math.min.apply({},this)
    }
+
+   // Ajax/Save the ClientHour if it is different from the value in the db.
+   var setHourOffset = parseInt(gdn.definition('SetHourOffset', hourOffset));
+   if (hourOffset !== setHourOffset) {
+      $.post(
+         gdn.url('/utility/sethouroffset.json'),
+         { HourOffset: hourOffset, TransientKey: gdn.definition('TransientKey') }
+      );
+   }
+
+   // Go to notifications if clicking on a user's notification count
+   $('li.UserNotifications a span').click(function() {
+      document.location = gdn.url('/profile/notifications');
+      return false;
+   });
    
 });
 
