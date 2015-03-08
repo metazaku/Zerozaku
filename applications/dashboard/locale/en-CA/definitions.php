@@ -116,21 +116,12 @@ $Definition['PasswordRequest'] = 'Someone has requested to reset your password a
   %3$s
 
 If you did not make this request, disregard this email.';
-$Definition['EmailNotification'] = '%1$s
-
-Follow the link below to check it out:
-%2$s
-
-Have a great day!';
-$Definition['EmailStoryNotification'] = '%1$s
-
-%3$s
-
----
-Follow the link below to check it out:
-%2$s
-
-Have a great day!';
+$Definition['EmailNotification'] = '%1$s, follow the link below to check it out:<br />
+<a style="color: #0379BA" href="%2$s">%2$s</a>';
+$Definition['EmailStoryNotification'] = '%1$s<br />
+<br />
+%3$s, follow the link below to check it out:<br />
+<a style="color: #0379BA" href="%2$s">%2$s</a>';
 $Definition['PluginHelp'] = "Plugins allow you to add functionality to your site.<br />Once a plugin has been added to your %s folder, you can enable or disable it here.";
 $Definition['ApplicationHelp'] = "Applications allow you to add large groups of functionality to your site.<br />Once an application has been added to your %s folder, you can enable or disable it here.";
 $Definition['ThemeHelp'] = "Themes allow you to change the look &amp; feel of your site.<br />Once a theme has been added to your %s folder, you can enable it here.";

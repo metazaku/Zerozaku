@@ -35,9 +35,9 @@ class UserModel extends Gdn_Model {
       if ($Header)
          $Message = FormatString($Header, $Data)."\n".$Message;
 
-      $Footer = T('EmailFooter', '');
-      if ($Footer)
-         $Message .= "\n".FormatString($Footer, $Data);
+      // $Footer = T('EmailFooter', '');
+      // if ($Footer)
+      //    $Message .= "\n".FormatString($Footer, $Data);
 
       return $Message;
    }
