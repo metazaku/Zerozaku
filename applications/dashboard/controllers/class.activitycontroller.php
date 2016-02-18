@@ -236,11 +236,17 @@ class ActivityController extends Gdn_Controller {
         if ($this->Form->authenticatedPostBack()) {
             $Body = $this->Form->getValue('Body', '');
             $ActivityID = $this->Form->getValue('ActivityID', '');
+
+            // set data format
+            if (!isset($Data['Format']) || strcasecmp($Data['Format'], 'Raw') == 0)
+                $Data['Format'] = C('Garden.InputFormatter');
+
             if (is_numeric($ActivityID) && $ActivityID > 0) {
                 $ActivityComment = array(
                     'ActivityID' => $ActivityID,
                     'Body' => $Body,
-                    'Format' => 'Text');
+                    // 'Format' => 'Text');
+                    'Format' => $Data['Format']);
 
                 $ID = $this->ActivityModel->comment($ActivityComment);
 

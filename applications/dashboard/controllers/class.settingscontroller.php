@@ -232,14 +232,15 @@ class SettingsController extends DashboardController {
                     $ImgUpload = new Gdn_UploadImage();
                     $TmpFavicon = $ImgUpload->validateUpload('Favicon', false);
                     if ($TmpFavicon) {
-                        $ICOName = 'favicon_'.substr(md5(microtime()), 16).'.ico';
+                        // $ICOName = 'favicon_'.substr(md5(microtime()), 16).'.ico';
+                        $ICOName = pathinfo($TargetImage, PATHINFO_BASENAME);
 
                         if ($Favicon) {
                             $Upload->delete($Favicon);
                         }
 
-                        // Resize the to a png.
-                        $Parts = $ImgUpload->SaveImageAs($TmpFavicon, $ICOName, 16, 16, array('OutputType' => 'ico', 'Crop' => true));
+                        // $Parts = $ImgUpload->SaveImageAs($TmpFavicon, $ICOName, 16, 16, array('OutputType' => 'ico', 'Crop' => true));
+                        $Parts = $ImgUpload->SaveImageAs($TmpFavicon, $ICOName, 16, 16, array('Crop' => true));
                         $SaveData['Garden.FavIcon'] = $Parts['SaveName'];
                         $this->setData('Favicon', $Parts['SaveName']);
                     }
